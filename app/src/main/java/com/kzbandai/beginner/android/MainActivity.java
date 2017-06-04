@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button login_button = (Button) findViewById(R.id.submit);
         login_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClassName(getPackageName(), ResultActivity.class.toString());
+                Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 
                 EditText resultEditText = (EditText) findViewById(R.id.targetNumber);
                 String targetNumber = resultEditText.getText().toString();
