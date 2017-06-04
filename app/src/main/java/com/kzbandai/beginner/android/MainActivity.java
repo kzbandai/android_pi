@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
                 EditText resultEditText = (EditText) findViewById(R.id.targetNumber);
                 String targetNumber = resultEditText.getText().toString();
-                intent.putExtra(extraWithResultActivity, targetNumber);
+                intent.putExtra(extraWithResultActivity, searchResult(targetNumber));
 
                 startActivity(intent);
             }
@@ -31,24 +31,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String searchResult(String targetNumber) {
-        String searchResult = String.valueOf(pi().indexOf(targetNumber));
-        if (searchResult.equals("-1")) {
-            return "ないよ";
+        String searchResult = String.valueOf(String.valueOf(Math.PI).substring(2).indexOf(targetNumber) + 1);
+        if (searchResult.equals("0")) {
+            return "ないです";
         }
 
-        return String.valueOf(pi().indexOf(targetNumber));
-    }
-
-    private String pi() {
-        Double a = Math.pow(10, 10000);
-        Double b = Math.pow(10, 10000);
-        Integer i = 10000 * 8 + 1;
-
-        while (i > 3) {
-            a = (a + b + b) * (i / 2) / i;
-            i = i - 2;
-        }
-
-        return String.valueOf(a - b);
+        return searchResult;
     }
 }
